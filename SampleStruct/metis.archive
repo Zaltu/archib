@@ -1,0 +1,17 @@
+{
+    "path": "./test.tar",
+    "type": "Game",
+    "displayname": "Valkyria Chronicles",
+    "data": {
+        "developer": "SEGA",
+        "publisher": "SEGA",
+        "title": "Valkyria Chronicles™",
+        "DLC": ["Challenge of the Edy Detachment"],
+        "genre": ["Action", "RGP", "Strategy"],
+        "year": 2014,
+        "id": "294860",
+        "DRM": "Steam",
+        "url": "https://store.steampowered.com/app/294860/",
+        "adult": false
+    }
+}
