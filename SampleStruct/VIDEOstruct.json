@@ -1,0 +1,15 @@
+{
+    "path": "/media/eyegis/anime/FruitsBasket.tar",
+    "type": "Video",
+    "displayname": "Fruits Basket (2019)",
+    "data": {
+        "type": "Anime",
+        "studio": "TMS Entertainment",
+        "title": "フルーツバスケット",
+        "genre": ["Romantic Comedy", "Slice of Life", "Supernatural", "Reverse Harem"],
+        "year": 2019,
+        "id": null,
+        "url": null,
+        "adult": false
+    }
+}

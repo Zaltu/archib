@@ -1,0 +1,12 @@
+{
+    "path": "/media/eyegis/images/WLOP.tar",
+    "type": "ImageSet",
+    "displayname": "WLOP Artwork Collection",
+    "data": {
+        "type": "drawn",
+        "subject": "WLOP",
+        "title": "WLOP",
+        "filetype": ["png"],
+        "adult": false
+    }
+}

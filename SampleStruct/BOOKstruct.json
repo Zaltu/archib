@@ -1,0 +1,15 @@
+{
+    "path": "/media/eyegis/books/manga/LoveHina.tar",
+    "type": "Book",
+    "displayname": "Love Hina",
+    "data": {
+        "type": "Manga",
+        "author": "Ken Akamatsu",
+        "illus": "Ken Akamatsu",
+        "title": "ラブ ひな",
+        "genre": ["Romantic Comedy", "Slice of Life", "Harem"],
+        "year": 1998,
+        "id": null,
+        "adult": false
+    }
+}

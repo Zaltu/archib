@@ -19,5 +19,5 @@ class Book(Archive):
         self.genre = bookconfig["genre"]
         self.year = bookconfig["year"]
         self.adult = bookconfig["adult"]
-        self.illus = bookconfig.get("illus")
-        self.id = bookconfig.get("id")
+        self.illus = bookconfig.get("illus") or None
+        self.id = bookconfig.get("id") or None

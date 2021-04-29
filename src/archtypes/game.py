@@ -18,8 +18,8 @@ class Game(Archive):
         self.genre = gameconfig["genre"]
         self.year = gameconfig["year"]
         self.adult = gameconfig["adult"]
-        self.publisher = gameconfig.get("publisher")
-        self.dlc = gameconfig.get("DLC")
-        self.id = gameconfig.get("id")
-        self.drm = gameconfig.get("DRM")
-        self.url = gameconfig.get("url")
+        self.publisher = gameconfig.get("publisher") or None
+        self.dlc = gameconfig.get("DLC") or None
+        self.id = gameconfig.get("id") or None
+        self.drm = gameconfig.get("DRM") or None
+        self.url = gameconfig.get("url") or None

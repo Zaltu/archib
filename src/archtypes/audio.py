@@ -17,7 +17,7 @@ class Audio(Archive):
         self.artist = audioconfig["artist"]
         self.title = audioconfig["title"]
         self.adult = audioconfig["adult"]
-        self.publisher = audioconfig.get("publisher")
-        self.id = audioconfig.get("id")
-        self.drm = audioconfig.get("DRM")
-        self.url = audioconfig.get("url")
+        self.publisher = audioconfig.get("publisher") or None
+        self.id = audioconfig.get("id") or None
+        self.drm = audioconfig.get("DRM") or None
+        self.url = audioconfig.get("url") or None

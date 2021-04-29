@@ -17,6 +17,6 @@ class Software(Archive):
         self.title = softconfig["title"]
         self.type = softconfig["type"]
         self.version = softconfig["version"]
-        self.format = softconfig.get("format")
-        self.drm = softconfig.get("DRM")
-        self.url = softconfig.get("url")
+        self.format = softconfig.get("format") or None
+        self.drm = softconfig.get("DRM") or None
+        self.url = softconfig.get("url") or None
