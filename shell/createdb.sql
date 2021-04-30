@@ -12,7 +12,6 @@ CREATE TYPE imagetypes AS ENUM ('2D', 'CG', 'Photo');
 
 CREATE TABLE games (
     uid INT GENERATED ALWAYS AS IDENTITY,
-    archive INT NOT NULL,
     developer TEXT NOT NULL,
     title TEXT NOT NULL,
     genre TEXT[] NOT NULL,
@@ -30,7 +29,6 @@ CREATE TABLE games (
 
 CREATE TABLE videos (
     uid INT GENERATED ALWAYS AS IDENTITY,
-    archive INT NOT NULL,
     videotype videotypes NOT NULL,
     studio TEXT NOT NULL,
     title TEXT NOT NULL,
@@ -46,7 +44,6 @@ CREATE TABLE videos (
 
 CREATE TABLE audio (
     uid INT GENERATED ALWAYS AS IDENTITY,
-    archive INT NOT NULL,
     audiotype audiotypes NOT NULL,
     artist TEXT NOT NULL,
     title TEXT NOT NULL,
@@ -62,7 +59,6 @@ CREATE TABLE audio (
 
 CREATE TABLE books (
     uid INT GENERATED ALWAYS AS IDENTITY,
-    archive INT NOT NULL,
     booktype booktypes NOT NULL,
     author TEXT NOT NULL,
     title TEXT NOT NULL,
@@ -78,7 +74,6 @@ CREATE TABLE books (
 
 CREATE TABLE software (
     uid INT GENERATED ALWAYS AS IDENTITY,
-    archive INT NOT NULL,
     developer TEXT NOT NULL,
     title TEXT NOT NULL,
     softtype softtypes NOT NULL,
@@ -93,7 +88,6 @@ CREATE TABLE software (
 
 CREATE TABLE imageset (
     uid INT GENERATED ALWAYS AS IDENTITY,
-    archive INT NOT NULL,
     imagetype imagetypes NOT NULL,
     subject TEXT NOT NULL,
     title TEXT NOT NULL,
