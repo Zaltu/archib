@@ -78,7 +78,7 @@ def _compress(archive, archivename):
     :param str archive: archive path
     :param str archivename: name of the archive file
     """
-    shutil.make_archive(archivename, "tar", os.path.dirname(archive), os.path.basename(archive))
+    shutil.make_archive(os.path.join(os.path.dirname(archive), archivename), "tar", os.path.dirname(archive), os.path.basename(archive))
 
 
 def _movefile(source, destination):

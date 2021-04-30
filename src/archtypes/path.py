@@ -47,7 +47,7 @@ class Archive():
 
         :raises SkipError: if a key is missing. This archive can't be processed.
         """
-        if not all(key in config for key in required):
+        if not all(key in config and config[key] is not None for key in required):
             # Kind of ugly, but lets us be more user friendly
             missing = []
             for key in required:
