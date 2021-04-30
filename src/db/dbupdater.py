@@ -1,6 +1,7 @@
 """
 Database connection and insertion logic.
 """
+import os
 import json
 
 import psycopg2
@@ -9,7 +10,7 @@ from src.archtypes.path import Archive
 from src.consts import SQL_INSERT, DB_TABLE_MAP
 
 # Get secret config
-with open('secrets.secret', 'r') as secretfile:
+with open(os.path.join(os.path.dirname(__file__), 'secrets.secret'), 'r') as secretfile:
     SECRETS = json.load(secretfile)
 
 class DBConnection():
@@ -72,17 +73,14 @@ def getarchiveinsertkeys(archive):
     return table, fields, values
 
 
-def insertarchives(archives):
+def insertarchive(archive):
     """
     Insert the archive into the DB.
     If this goes wrong, there's gonna be a problem.
 
-    :param list[Archive] archives: the list of archive configs to enter into the DB
+    :param Archive archives: the python archive object to enter into the DB
     """
     dbconn = DBConnection()
-
-    for archive in archives:
-        table, fields, values = getarchiveinsertkeys(archive)
-        dbconn.insert(table, fields, values)
-
+    table, fields, values = getarchiveinsertkeys(archive)
+    dbconn.insert(table, fields, values)
     dbconn.close()

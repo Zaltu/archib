@@ -7,6 +7,7 @@ import shutil
 
 from src.archtypes import TYPEMAP
 from src.consts import ARCHIVE_FILENAME, SkipError
+from src.db import dbupdater
 
 
 def makearchive(archiveconfig):
@@ -20,10 +21,10 @@ def makearchive(archiveconfig):
     :return: the python archive subclass of this archive
     :rtype: Archive
     """
-    if not archiveconfig["archtype"] or archiveconfig["archtype"] not in TYPEMAP:
-        print("ERROR: Unrecognised or missing archive type: %s" % archiveconfig["archtype"])
+    if not archiveconfig["type"] or archiveconfig["type"] not in TYPEMAP:
+        print("ERROR: Unrecognised or missing archive type: %s" % archiveconfig["type"])
         raise SkipError()
-    return TYPEMAP[archiveconfig["archtype"]](archiveconfig)
+    return TYPEMAP[archiveconfig["type"]](archiveconfig)
 
 
 def readconfig(archive):
@@ -80,7 +81,7 @@ def processarchive(archive):
     config = readconfig(archive)
 
     # Create the archive-type object, which will validate the config.
-    archiveobj = makearchive(archive)
+    archiveobj = makearchive(config)
 
     # If the directory where we intend to put the archive doesn't exist, it should be created manually.
     if not os.path.exists(os.path.dirname(config["path"])):
@@ -101,9 +102,9 @@ def processarchive(archive):
 
     # Compress folder
     _compress(archive, archivename)
-    compressedlocation = os.path.join(os.path.dirname(archive), archivename)
 
     # If the compressed file does not exist, we have a problem...
+    print(compressedlocation)
     if not os.path.exists(compressedlocation):
         print("ERROR: Compression has not generated the expected file. Skipping.")
         raise SkipError()
@@ -124,3 +125,4 @@ def processarchive(archive):
         raise SkipError()
 
     # Update DB
+    #dbupdater.insertarchive(archiveobj)

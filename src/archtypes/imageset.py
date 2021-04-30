@@ -9,12 +9,12 @@ IMAGESETENUMS = {
     "type": ["2D", "CG", "Photo"]
 }
 
-class Game(Archive):
+class ImageSet(Archive):
     """
     Archtype for ImageSet archiving.
     """
     def __init__(self, config):
-        super()__init__(config)
+        super().__init__(config)
         imageconfig = config["data"]
         Archive.validate(imageconfig, _REQUIRED, IMAGESETENUMS)
         self.imagetype = imageconfig["type"]
