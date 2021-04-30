@@ -44,7 +44,8 @@ class DBConnection():
         """
         fieldstr = ", ".join(fields)
         query = SQL_INSERT.format(table=table, fieldstr=fieldstr)
-        print("Performing SQL command:\n%s\n%s" % (query, values))
+        query = query % (", ".join(["%s" for x in range(0, len(values))]))
+        print("Performing SQL command:\n%s\n%s" % (query, tuple(values)))
         self.cursor.execute(query, values)
 
     def close(self):
