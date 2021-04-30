@@ -27,7 +27,7 @@ def _checkrecusriveconfig(path, top=True):
             foundConfig = True
     if not foundConfig and top:
         print("ERROR: No config file found for this archive. Expecting\n%s" % os.path.join(path, ARCHIVE_FILENAME))
-        #sys.exit(1)
+        sys.exit(1)
 
 
 def _getarchives(path):
@@ -42,7 +42,7 @@ def _getarchives(path):
     for checking in tocheck:
         if os.path.isfile(checking):
             print(f"ERROR: Directory should be clear of any superfluous files for maximum sanitation. Found\n{checking}")
-            #sys.exit(1)
+            sys.exit(1)
         elif os.path.isdir(checking):
             _checkrecusriveconfig(checking)
             print(f"Found archive folder\n{checking}\n")

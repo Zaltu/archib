@@ -32,6 +32,7 @@ def detectcompressed(archivepath):
         return False
     return filesthere[0]
 
+
 def makearchive(archiveconfig):
     """
     Transform the config into a python type, which will validate it.
@@ -141,4 +142,4 @@ def processarchive(archive):
         raise SkipError()
 
     # Update DB
-    #dbupdater.insertarchive(archiveobj)
+    dbupdater.insertarchive(archiveobj)
