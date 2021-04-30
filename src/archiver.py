@@ -45,8 +45,7 @@ def makearchive(archiveconfig):
     :rtype: Archive
     """
     if not archiveconfig["type"] or archiveconfig["type"] not in TYPEMAP:
-        print("ERROR: Unrecognised or missing archive type: %s" % archiveconfig["type"])
-        raise SkipError()
+        raise SkipError("ERROR: Unrecognised or missing archive type: %s" % archiveconfig["type"])
     return TYPEMAP[archiveconfig["type"]](archiveconfig)
 
 
@@ -66,8 +65,7 @@ def readconfig(archive):
         with open(configpath, 'r') as configfile:
             config = json.load(configfile)
     except FileNotFoundError:
-        print(f"ERROR: Config file we *just* confirm existed appears to have moved. Expecting\n{configpath}")
-        raise SkipError()
+        raise SkipError(f"ERROR: Config file we *just* confirm existed appears to have moved. Expecting\n{configpath}")
     return config
 
 
@@ -108,13 +106,11 @@ def processarchive(archive):
 
     # If the directory where we intend to put the archive doesn't exist, it should be created manually.
     if not os.path.exists(os.path.dirname(config["path"])):
-        print("ERROR: Destination path does not exist\n%s" % os.path.dirname(config["path"]))
-        raise SkipError()
+        raise SkipError("ERROR: Destination path does not exist\n%s" % os.path.dirname(config["path"]))
 
     # If the full destination path already exists, this dataset has already been archived.
     if os.path.exists(config["path"]):
-        print("ERROR: Archive appears to already exist:\n%s" % config["path"])
-        raise SkipError()
+        raise SkipError("ERROR: Archive appears to already exist:\n%s" % config["path"])
 
     compressedlocation = detectcompressed(archive)
     if not compressedlocation:
@@ -122,8 +118,7 @@ def processarchive(archive):
         try:
             archivename = os.path.basename(config["path"]).split(".")[0]
         except:
-            print("ERROR: Cannot determine intended archive name from config:\n%s" % config["path"])
-            raise SkipError()
+            raise SkipError("ERROR: Cannot determine intended archive name from config:\n%s" % config["path"])
 
         # Compress folder
         _compress(archive, archivename)
@@ -131,15 +126,13 @@ def processarchive(archive):
 
     # If the compressed file does not exist, we have a problem...
     if not os.path.exists(compressedlocation):
-        print("ERROR: Compression has not generated the expected file. Skipping.")
-        raise SkipError()
+        raise SkipError("ERROR: Compression has not generated the expected file. Skipping.")
 
     # Move compressed files to location
     try:
         _movefile(compressedlocation, config["path"])
     except:
-        print("ERROR: Unable to move compressed file... Manual intervention required.")
-        raise SkipError()
+        raise SkipError("ERROR: Unable to move compressed file... Manual intervention required.")
 
     # Update DB
     dbupdater.insertarchive(archiveobj)
