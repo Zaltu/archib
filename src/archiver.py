@@ -5,7 +5,25 @@ import os
 import json
 import shutil
 
+from src.archtypes import TYPEMAP
 from src.consts import ARCHIVE_FILENAME, SkipError
+
+
+def makearchive(archiveconfig):
+    """
+    Transform the config into a python type, which will validate it.
+
+    :param dict archiveconfig: the archive config read from disk
+
+    :raises SkipError: if the archive type in the config is not valid, or is missing
+
+    :return: the python archive subclass of this archive
+    :rtype: Archive
+    """
+    if not archiveconfig["archtype"] or archiveconfig["archtype"] not in TYPEMAP:
+        print("ERROR: Unrecognised or missing archive type: %s" % archiveconfig["archtype"])
+        raise SkipError()
+    return TYPEMAP[archiveconfig["archtype"]](archiveconfig)
 
 
 def readconfig(archive):
@@ -60,6 +78,9 @@ def processarchive(archive):
     """
     # Read config
     config = readconfig(archive)
+
+    # Create the archive-type object, which will validate the config.
+    archiveobj = makearchive(archive)
 
     # If the directory where we intend to put the archive doesn't exist, it should be created manually.
     if not os.path.exists(os.path.dirname(config["path"])):

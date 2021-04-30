@@ -5,6 +5,10 @@ from src.archtypes.path import Archive
 
 _REQUIRED = ["type", "author", "title", "genre", "year", "adult"]
 
+BOOKENUMS = {
+    "type": ["Artbook", "Comic", "Doujinshi", "Manga", "Novel"]
+}
+
 class Book(Archive):
     """
     Archtype for Book archiving.
@@ -12,7 +16,7 @@ class Book(Archive):
     def __init__(self, config):
         super().__init__(config)
         bookconfig = config["data"]
-        Archive.validate(bookconfig, _REQUIRED)
+        Archive.validate(bookconfig, _REQUIRED, BOOKENUMS)
         self.booktype = bookconfig["type"]
         self.author = bookconfig["author"]
         self.title = bookconfig["title"]

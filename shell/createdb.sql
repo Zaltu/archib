@@ -3,7 +3,8 @@ CREATE DATABASE archive;
 \c archive
 
 CREATE TYPE archtypes AS ENUM ('Audio', 'Book', 'Game', 'ImageSet', 'Software', 'Video');
-CREATE TYPE videotypes AS ENUM ('Anime', 'Anime Movie', 'CG Movie', 'Feature Film', 'Series', 'TV Series', 'Video', 'VR Live-Action', 'VR CG');
+CREATE TYPE videostyles AS ENUM ('Anime', 'Cartoon', 'CG', 'Live-Action');
+CREATE TYPE videotypes AS ENUM ('Series', 'Feature');
 CREATE TYPE audiotypes AS ENUM ('ASMR', 'Audio Book', 'Audio Roleplay', 'Music');
 CREATE TYPE booktypes AS ENUM ('Artbook', 'Comic', 'Doujinshi', 'Manga', 'Novel');
 CREATE TYPE softtypes AS ENUM ('DCC', 'Driver', 'Reader');
@@ -29,12 +30,14 @@ CREATE TABLE games (
 
 CREATE TABLE videos (
     uid INT GENERATED ALWAYS AS IDENTITY,
+    videostyle videostyles NOT NULL,
     videotype videotypes NOT NULL,
     studio TEXT NOT NULL,
     title TEXT NOT NULL,
     genre TEXT[] NOT NULL,
     year INT NOT NULL,
     adult BOOLEAN NOT NULL,
+    vr BOOLEAN NOT NULL,
     id TEXT,
     url TEXT,
     filepath TEXT NOT NULL,

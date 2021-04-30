@@ -12,7 +12,6 @@ DB_TABLE_MAP = {
     "ImageSet": "imageset"
 }
 
-
 SQL_INSERT = """
 INSERT INTO {table}({fieldstr})
 VALUES(%s) RETURNING uid;

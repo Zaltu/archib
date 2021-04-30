@@ -6,6 +6,10 @@ from src.consts import ConfigError
 # Archive is an abstract type. "data" isn't required here, but it is required for every real archive type.
 _REQUIRED = ["path", "type", "displayname", "data"]
 
+ARCHIVEENUMS = {
+    "type": ["Audio", "Book", "Game", "ImageSet", "Software", "Video"]
+}
+
 class Archive():
     """
     Base class shared by all archive types.
@@ -15,7 +19,7 @@ class Archive():
     archtype = None
     displayname = None
     def __init__(self, config):
-        Archive.validate(config, _REQUIRED)
+        Archive.validate(config, _REQUIRED, ARCHIVEENUMS)
         self.filepath = config["path"]
         self.archtype = config["type"]
         self.displayname = config["displayname"]
@@ -32,13 +36,14 @@ class Archive():
 
     
     @staticmethod
-    def validate(config, required):
+    def validate(config, required, enums):
         """
         Validate an archive according to it's required keys.
         Should be called in the constructor.
 
         :param dict config: config to validate
         :param list[str] required: list of required keys
+        :param dict enums: set of all fields that have a limited number of values {"field": ["values"]}
 
         :raises SkipError: if a key is missing. This archive can't be processed.
         """
@@ -50,3 +55,7 @@ class Archive():
                     missing.append(key)
             print(f"ERROR: Missing required key(s) in config file:\n{missing}")
             raise ConfigError()
+        for enum in enums:
+            if config.get(enum) and not config.get(enum) in enums[enum]:
+                print(f"ERROR: value of {enum} should be restricted to {enums[enum]}, got {config[enum]}")
+                raise ConfigError()
