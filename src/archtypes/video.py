@@ -1,7 +1,7 @@
 """
 Base class for Video type representation.
 """
-from src.archtypes.path import Path
+from src.archtypes.path import Archive
 
 _REQUIRED = ["type", "studio", "title", "genre", "year", "adult"]
 
@@ -10,10 +10,10 @@ class Video(Archive):
     Archtype for video archiving.
     """
     def __init__(self, config):
-        super(config)
+        super().__init__(config)
         videoconfig = config["data"]
         Archive.validate(videoconfig, _REQUIRED)
-        self.type = videoconfig["type"]
+        self.videotype = videoconfig["type"]
         self.studio = videoconfig["studio"]
         self.title = videoconfig["title"]
         self.genre = videoconfig["genre"]

@@ -1,7 +1,7 @@
 """
 Base class for Audio type representation.
 """
-from src.archtypes.path import Path
+from src.archtypes.path import Archive
 
 _REQUIRED = ["type", "artist", "title", "adult"]
 
@@ -10,10 +10,10 @@ class Audio(Archive):
     Archtype for Audio archiving.
     """
     def __init__(self, config):
-        super(config)
+        super().__init__(config)
         audioconfig = config["data"]
         Archive.validate(audioconfig, _REQUIRED)
-        self.type = audioconfig["type"]
+        self.audiotype = audioconfig["type"]
         self.artist = audioconfig["artist"]
         self.title = audioconfig["title"]
         self.adult = audioconfig["adult"]

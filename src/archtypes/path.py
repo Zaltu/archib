@@ -11,14 +11,25 @@ class Archive():
     Base class shared by all archive types.
     Holds only a few parameters essential to all types, which must all be set.
     """
-    path = None
+    filepath = None
     archtype = None
     displayname = None
     def __init__(self, config):
-        Archive.validate(config, required)
-        self.path = config["path"]
+        Archive.validate(config, _REQUIRED)
+        self.filepath = config["path"]
         self.archtype = config["type"]
         self.displayname = config["displayname"]
+
+    def parse(self):
+        """
+        Get all this object's properties.
+
+        :return: iterator over *all* properties of this object
+        :rtype: iterator[(key, value)]
+        """
+        for key, value in self.__dict__.items():
+            yield key, value
+
     
     @staticmethod
     def validate(config, required):
@@ -35,7 +46,7 @@ class Archive():
             # Kind of ugly, but lets us be more user friendly
             missing = []
             for key in required:
-                if key not in config:
+                if not config.get(key):
                     missing.append(key)
             print(f"ERROR: Missing required key(s) in config file:\n{missing}")
             raise ConfigError()

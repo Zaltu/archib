@@ -1,7 +1,7 @@
 """
 Base class for Game type representation.
 """
-from src.archtypes.path import Path
+from src.archtypes.path import Archive
 
 _REQUIRED = ["developer", "title", "genre", "year", "adult"]
 
@@ -10,7 +10,7 @@ class Game(Archive):
     Archtype for Game archiving.
     """
     def __init__(self, config):
-        super(config)
+        super().__init__(config)
         gameconfig = config["data"]
         Archive.validate(gameconfig, _REQUIRED)
         self.developer = gameconfig["developer"]

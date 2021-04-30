@@ -1,7 +1,7 @@
 """
 Base class for Book type representation.
 """
-from src.archtypes.path import Path
+from src.archtypes.path import Archive
 
 _REQUIRED = ["type", "author", "title", "genre", "year", "adult"]
 
@@ -10,10 +10,10 @@ class Book(Archive):
     Archtype for Book archiving.
     """
     def __init__(self, config):
-        super(config)
+        super().__init__(config)
         bookconfig = config["data"]
         Archive.validate(bookconfig, _REQUIRED)
-        self.type = bookconfig["type"]
+        self.booktype = bookconfig["type"]
         self.author = bookconfig["author"]
         self.title = bookconfig["title"]
         self.genre = bookconfig["genre"]

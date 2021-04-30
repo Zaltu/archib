@@ -1,7 +1,7 @@
 """
 Base class for ImageSet type representation.
 """
-from src.archtypes.path import Path
+from src.archtypes.path import Archive
 
 _REQUIRED = ["type", "subject", "title", "filetype", "adult"]
 
@@ -10,10 +10,10 @@ class Game(Archive):
     Archtype for ImageSet archiving.
     """
     def __init__(self, config):
-        super(config)
+        super()__init__(config)
         imageconfig = config["data"]
         Archive.validate(imageconfig, _REQUIRED)
-        self.type = imageconfig["type"]
+        self.imagetype = imageconfig["type"]
         self.subject = imageconfig["subject"]
         self.title = imageconfig["title"]
         self.filetype = imageconfig["filetype"]

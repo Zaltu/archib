@@ -3,7 +3,7 @@
     "type": "ImageSet",
     "displayname": "WLOP Artwork Collection",
     "data": {
-        "type": "drawn",
+        "type": "2D",
         "subject": "WLOP",
         "title": "WLOP",
         "filetype": ["png"],
