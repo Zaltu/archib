@@ -2,6 +2,7 @@
 Collection of archiver constants.
 """
 ARCHIVE_FILENAME = "metis.archive"
+ARCHIVE_FILETYPES = ["zip", "tar", "rar", "7z", "iso"]
 
 DB_TABLE_MAP = {
     "Game": "games",
