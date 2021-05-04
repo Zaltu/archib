@@ -2,6 +2,7 @@
     "path": "/media/eyegis/games/ValkyriaChronicles.tar",
     "type": "Game",
     "displayname": "Valkyria Chronicles",
+    "notes": null,
     "data": {
         "developer": "SEGA",
         "publisher": "SEGA",

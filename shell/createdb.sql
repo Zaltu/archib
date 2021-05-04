@@ -24,6 +24,7 @@ CREATE TABLE games (
     drm TEXT,
     url TEXT,
     mod TEXT,
+    notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
     displayname TEXT NOT NULL
@@ -41,6 +42,7 @@ CREATE TABLE videos (
     vr BOOLEAN NOT NULL,
     id TEXT,
     url TEXT,
+    notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
     displayname TEXT NOT NULL
@@ -56,6 +58,7 @@ CREATE TABLE audio (
     id TEXT,
     drm TEXT,
     url TEXT,
+    notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
     displayname TEXT NOT NULL
@@ -71,6 +74,7 @@ CREATE TABLE books (
     adult BOOLEAN NOT NULL,
     illus TEXT,
     id TEXT,
+    notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
     displayname TEXT NOT NULL
@@ -85,6 +89,7 @@ CREATE TABLE software (
     format TEXT[],
     drm TEXT,
     url TEXT,
+    notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
     displayname TEXT NOT NULL
@@ -97,6 +102,7 @@ CREATE TABLE imageset (
     title TEXT NOT NULL,
     filetype TEXT[] NOT NULL,
     adult BOOLEAN NOT NULL,
+    notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
     displayname TEXT NOT NULL

@@ -2,6 +2,7 @@
     "path": "/media/eyegis/images/WLOP.tar",
     "type": "ImageSet",
     "displayname": "WLOP Artwork Collection",
+    "notes": null,
     "data": {
         "type": "2D",
         "subject": "WLOP",

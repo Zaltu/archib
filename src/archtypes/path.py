@@ -23,6 +23,7 @@ class Archive():
         self.filepath = config["path"]
         self.archtype = config["type"]
         self.displayname = config["displayname"]
+        self.notes = config.get("notes")
 
     def parse(self):
         """
