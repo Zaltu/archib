@@ -24,6 +24,7 @@ CREATE TABLE games (
     drm TEXT,
     url TEXT,
     mod TEXT,
+    gamever TEXT,
     notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
