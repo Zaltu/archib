@@ -23,6 +23,7 @@ CREATE TABLE games (
     id TEXT,
     drm TEXT,
     url TEXT,
+    mod TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
     displayname TEXT NOT NULL

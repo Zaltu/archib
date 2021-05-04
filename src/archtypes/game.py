@@ -25,3 +25,4 @@ class Game(Archive):
         self.id = gameconfig.get("id") or None
         self.drm = gameconfig.get("drm") or None
         self.url = gameconfig.get("url") or None
+        self.mod = gameconfig.get("mod") or None
