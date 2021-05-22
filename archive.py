@@ -85,7 +85,7 @@ def archive():
 
     print("Checking directory contents...")
     archives = _getarchives(path)
-    
+
     for archive in archives:
         try:
             archiver.processarchive(archive)
