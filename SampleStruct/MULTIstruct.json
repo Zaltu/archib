@@ -1,0 +1,42 @@
+{
+    "valk1.7z": {
+        "path": "/media/eyegis/games/ValkyriaChronicles.tar",
+        "type": "Game",
+        "displayname": "Valkyria Chronicles",
+        "notes": null,
+        "data": {
+            "developer": "SEGA",
+            "publisher": "SEGA",
+            "title": "Valkyria Chronicles™",
+            "DLC": ["Challenge of the Edy Detachment"],
+            "genre": ["Action", "RGP", "Strategy"],
+            "year": 2014,
+            "id": "294860",
+            "DRM": "Steam",
+            "url": "https://store.steampowered.com/app/294860/",
+            "mod": null,
+            "version": null,
+            "adult": false
+        }
+    },
+    "valk4.7z":{
+        "path": "/media/eyegis/games/ValkyriaChronicles4.tar",
+        "type": "Game",
+        "displayname": "Valkyria Chronicles 4",
+        "notes": null,
+        "data": {
+            "developer": "SEGA",
+            "publisher": "SEGA",
+            "title": "Valkyria Chronicles 4 Complete Edition",
+            "DLC": ["A Captainless Squad", "A United Front with Suqad 7", "Advance Ops", "Decals", "Expert Level Skirmishes", "Squad E, to the Beach!", "The Two Valkyria"],
+            "genre": ["Action", "RGP", "Strategy"],
+            "year": 2018,
+            "id": "790820",
+            "DRM": "Steam",
+            "url": "https://store.steampowered.com/app/790820/",
+            "mod": null,
+            "version": null,
+            "adult": false
+        }
+    }
+}
