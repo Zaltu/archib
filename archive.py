@@ -15,7 +15,9 @@ def _checkrecusriveconfig(path, top=True):
     :return: True if the filetree from this point is valid. Kills the program otherwise.
     :rtype: bool
     """
-    paths = glob.glob(os.path.join(path, "*"))
+    print(path)
+    paths = glob.glob(os.path.join(glob.escape(path), "*"))
+    print(paths)
     foundConfig = False
     for checking in paths:
         if os.path.isdir(checking):
