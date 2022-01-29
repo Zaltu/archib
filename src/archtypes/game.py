@@ -17,11 +17,13 @@ class Game(Archive):
         Archive.validate(gameconfig, _REQUIRED, GAMEENUMS)
         self.developer = gameconfig["developer"]
         self.title = gameconfig["title"]
-        self.genre = gameconfig["genre"]
-        self.year = gameconfig["year"]
         self.adult = gameconfig["adult"]
+        self.genre = gameconfig["genre"] or None
+        self.year = gameconfig["year"] or None
         self.publisher = gameconfig.get("publisher") or None
         self.dlc = gameconfig.get("dlc") or None
         self.id = gameconfig.get("id") or None
         self.drm = gameconfig.get("DRM") or None
         self.url = gameconfig.get("url") or None
+        self.gamever = gameconfig.get("version") or None
+        self.mod = gameconfig.get("mod") or None

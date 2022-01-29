@@ -2,6 +2,7 @@
     "path": "/media/eyegis/audio/music/aldnoahzero.tar",
     "type": "Audio",
     "displayname": "Aldnoah Zero OST",
+    "notes": null,
     "data": {
         "type": "OST",
         "publisher": null,

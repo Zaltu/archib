@@ -2,6 +2,7 @@
     "path": "/media/eyegis/games/ValkyriaChronicles.tar",
     "type": "Game",
     "displayname": "Valkyria Chronicles",
+    "notes": null,
     "data": {
         "developer": "SEGA",
         "publisher": "SEGA",
@@ -12,6 +13,8 @@
         "id": "294860",
         "DRM": "Steam",
         "url": "https://store.steampowered.com/app/294860/",
+        "mod": null,
+        "version": null,
         "adult": false
     }
 }

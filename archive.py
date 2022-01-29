@@ -85,13 +85,13 @@ def archive():
 
     print("Checking directory contents...")
     archives = _getarchives(path)
-    
+
     for archive in archives:
         try:
             archiver.processarchive(archive)
             print(f"Archive processed successfully. It can be safely remove from the staging area.\n{archive}\n")
-        except SkipError:
-            print(f"ERROR: A fatal error has occured while processing an archive. It has been skipped.\n{archive}\n")
+        except SkipError as e:
+            print(f"ERROR: A fatal error has occured while processing an archive. It has been skipped.\n{archive}\n%s\n" % str(e))
 
 
 if __name__ == "__main__":

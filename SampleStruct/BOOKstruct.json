@@ -2,6 +2,7 @@
     "path": "/media/eyegis/books/manga/LoveHina.tar",
     "type": "Book",
     "displayname": "Love Hina",
+    "notes": null,
     "data": {
         "type": "Manga",
         "author": "Ken Akamatsu",

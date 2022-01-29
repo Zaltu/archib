@@ -2,6 +2,7 @@
     "path": "/media/eyegis/software/PhotoshopCC2017.tar",
     "type": "Software",
     "displayname": "Photoshop CC 2017",
+    "notes": null,
     "data": {
         "developer": "Adobe",
         "title": "Adobe Photoshop CC 2017",
