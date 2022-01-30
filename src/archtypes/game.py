@@ -3,7 +3,7 @@ Base class for Game type representation.
 """
 from src.archtypes.path import Archive
 
-_REQUIRED = ["developer", "title", "genre", "year", "adult"]
+_REQUIRED = ["platform", "developer", "title", "genre", "year", "adult"]
 
 GAMEENUMS = {}
 
@@ -15,6 +15,7 @@ class Game(Archive):
         super().__init__(config)
         gameconfig = config["data"]
         Archive.validate(gameconfig, _REQUIRED, GAMEENUMS)
+        self.platform = gameconfig["platform"]
         self.developer = gameconfig["developer"]
         self.title = gameconfig["title"]
         self.adult = gameconfig["adult"]

@@ -10,7 +10,6 @@ from src.archtypes import TYPEMAP
 from src.consts import ARCHIVE_FILENAME, ARCHIVE_FILETYPES, SkipError
 from src.db import dbupdater
 
-
 def detectcompressed(archivepath):
     """
     Checks whether the requested archivation data is already compressed.

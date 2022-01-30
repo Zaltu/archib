@@ -5,6 +5,7 @@
         "displayname": "Valkyria Chronicles",
         "notes": null,
         "data": {
+            "platform": "PC",
             "developer": "SEGA",
             "publisher": "SEGA",
             "title": "Valkyria Chronicles™",
@@ -25,6 +26,7 @@
         "displayname": "Valkyria Chronicles 4",
         "notes": null,
         "data": {
+            "platform": "PC",
             "developer": "SEGA",
             "publisher": "SEGA",
             "title": "Valkyria Chronicles 4 Complete Edition",

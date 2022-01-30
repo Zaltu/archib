@@ -13,6 +13,7 @@ CREATE TYPE imagetypes AS ENUM ('2D', 'CG', 'Photo');
 
 CREATE TABLE games (
     uid INT GENERATED ALWAYS AS IDENTITY,
+    platform TEXT NOT NULL,
     developer TEXT NOT NULL,
     title TEXT NOT NULL,
     adult BOOLEAN NOT NULL,
