@@ -24,7 +24,7 @@ class Game(Archive):
         self.publisher = gameconfig.get("publisher") or None
         self.dlc = gameconfig.get("dlc") or None
         self.id = gameconfig.get("id") or None
-        self.drm = gameconfig.get("drm") or None
+        self.drm = gameconfig.get("DRM") or None
         self.url = gameconfig.get("url") or None
         self.gamever = gameconfig.get("version") or None
         self.mod = gameconfig.get("mod") or None

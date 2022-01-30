@@ -27,10 +27,8 @@ class DBConnection():
         Connect to the Postgress db.
         """
         self.conn = psycopg2.connect(
-            host=SECRETS["host"],
             database=SECRETS["database"],
-            user=SECRETS["user"],
-            password=SECRETS["password"]
+            user=SECRETS["user"]
         )
         self.cursor = self.conn.cursor()
 

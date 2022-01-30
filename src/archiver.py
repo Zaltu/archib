@@ -19,7 +19,7 @@ def detectcompressed(archivepath):
     :return: the path to an existing set of compressed data, or False
     :rtype: str|bool
     """
-    filesthere = glob.glob(os.path.join(archivepath, "*"))
+    filesthere = glob.glob(os.path.join(glob.escape(archivepath), "*"))
     if len(filesthere) > 2:  # There needs to be only one archive and one config in this case...
         return False
     filesthere.remove(os.path.join(archivepath, ARCHIVE_FILENAME))
