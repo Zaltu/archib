@@ -161,13 +161,14 @@ def processonearchive(archive, config):
     _finalizeandupload(compressedlocation, config, archiveobj)
 
 
-def processarchiveset(archivepath, config):
+def processarchiveset(archivepath, config, directory):
     """
     Process an archive that was defined in a multi archive set. Multiple aspects of the validation logic are
     different in this situation, so the whole thing is separated.
 
-    :param str archivepath: path to the compressed file or single directory of this archive.
+    :param str archivepath: filename of the compressed file or single directory of this archive.
     :param dict config: the config for this particular archive
+    :param str directory: path to the location of the compressed file or single directory of this archive
     """
     # Create the archive-type object, which will validate the config.
     archiveobj = makearchive(config)
@@ -185,7 +186,7 @@ def processarchiveset(archivepath, config):
         _compress(archivepath, archivename)
         compressedlocation = os.path.join(os.path.dirname(archivepath), os.path.basename(config["path"]))
     elif archivepath.split(".")[-1] in ARCHIVE_FILETYPES:
-        compressedlocation = archivepath
+        compressedlocation = os.path.join(directory, archivepath)
     else:
         raise SkipError("Multi-Archive Sets expect pre-compressed files, or folders. Received:\n%s" % archivepath)
 
@@ -206,4 +207,4 @@ def processarchive(directory):
         processonearchive(directory, config)
     else:
         for archive in config:
-            processarchiveset(archive, config[archive])
+            processarchiveset(archive, config[archive], directory)
