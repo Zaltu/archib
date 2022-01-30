@@ -86,21 +86,20 @@ def _movefile(source, destination):
     :param str source: path to compressed archive to move
     :param str destination: path to moveto destination
     """
+    # Make sure full path exists
+    os.makedirs(os.path.dirname(destination), exist_ok=True)
+    # Move file
     shutil.move(source, destination)
 
 
 def _validatedestination(config):
     """
-    Validate if the target directory exists, and whether this file has already been archived.
+    Validate whether this file has already been archived.
 
     :param dict config: this archive's config
 
-    :raises SkipError: if the target directory doesn't exist, or the data has already been archived.
+    :raises SkipError: if the data has already been archived.
     """
-    # If the directory where we intend to put the archive doesn't exist, it should be created manually.
-    if not os.path.exists(os.path.dirname(config["path"])):
-        raise SkipError("ERROR: Destination path does not exist\n%s" % os.path.dirname(config["path"]))
-
     # If the full destination path already exists, this dataset has already been archived.
     if os.path.exists(config["path"]):
         raise SkipError("ERROR: Archive appears to already exist:\n%s" % config["path"])
