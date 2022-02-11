@@ -3,7 +3,7 @@ Base class for ImageSet type representation.
 """
 from src.archtypes.path import Archive
 
-_REQUIRED = ["type", "subject", "title", "filetype", "adult"]
+_REQUIRED = ["type", "title", "filetype", "adult"]
 
 IMAGESETENUMS = {
     "type": ["2D", "CG", "Photo"]
@@ -18,7 +18,7 @@ class ImageSet(Archive):
         imageconfig = config["data"]
         Archive.validate(imageconfig, _REQUIRED, IMAGESETENUMS)
         self.imagetype = imageconfig["type"]
-        self.subject = imageconfig["subject"]
+        self.artist = imageconfig["artist"]
         self.title = imageconfig["title"]
         self.filetype = imageconfig["filetype"]
         self.adult = imageconfig["adult"]

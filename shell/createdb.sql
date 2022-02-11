@@ -100,7 +100,7 @@ CREATE TABLE software (
 CREATE TABLE imageset (
     uid INT GENERATED ALWAYS AS IDENTITY,
     imagetype imagetypes NOT NULL,
-    subject TEXT NOT NULL,
+    artist TEXT,
     title TEXT NOT NULL,
     filetype TEXT[] NOT NULL,
     adult BOOLEAN NOT NULL,
