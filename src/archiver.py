@@ -86,21 +86,20 @@ def _movefile(source, destination):
     :param str source: path to compressed archive to move
     :param str destination: path to moveto destination
     """
+    # Make sure full path exists
+    os.makedirs(os.path.dirname(destination), exist_ok=True)
+    # Move file
     shutil.move(source, destination)
 
 
 def _validatedestination(config):
     """
-    Validate if the target directory exists, and whether this file has already been archived.
+    Validate whether this file has already been archived.
 
     :param dict config: this archive's config
 
-    :raises SkipError: if the target directory doesn't exist, or the data has already been archived.
+    :raises SkipError: if the data has already been archived.
     """
-    # If the directory where we intend to put the archive doesn't exist, it should be created manually.
-    if not os.path.exists(os.path.dirname(config["path"])):
-        raise SkipError("ERROR: Destination path does not exist\n%s" % os.path.dirname(config["path"]))
-
     # If the full destination path already exists, this dataset has already been archived.
     if os.path.exists(config["path"]):
         raise SkipError("ERROR: Archive appears to already exist:\n%s" % config["path"])
@@ -161,13 +160,14 @@ def processonearchive(archive, config):
     _finalizeandupload(compressedlocation, config, archiveobj)
 
 
-def processarchiveset(archivepath, config):
+def processarchiveset(archivepath, config, directory):
     """
     Process an archive that was defined in a multi archive set. Multiple aspects of the validation logic are
     different in this situation, so the whole thing is separated.
 
-    :param str archivepath: path to the compressed file or single directory of this archive.
+    :param str archivepath: filename of the compressed file or single directory of this archive.
     :param dict config: the config for this particular archive
+    :param str directory: path to the location of the compressed file or single directory of this archive
     """
     # Create the archive-type object, which will validate the config.
     archiveobj = makearchive(config)
@@ -185,7 +185,7 @@ def processarchiveset(archivepath, config):
         _compress(archivepath, archivename)
         compressedlocation = os.path.join(os.path.dirname(archivepath), os.path.basename(config["path"]))
     elif archivepath.split(".")[-1] in ARCHIVE_FILETYPES:
-        compressedlocation = archivepath
+        compressedlocation = os.path.join(directory, archivepath)
     else:
         raise SkipError("Multi-Archive Sets expect pre-compressed files, or folders. Received:\n%s" % archivepath)
 
@@ -206,4 +206,4 @@ def processarchive(directory):
         processonearchive(directory, config)
     else:
         for archive in config:
-            processarchiveset(archive, config[archive])
+            processarchiveset(archive, config[archive], directory)

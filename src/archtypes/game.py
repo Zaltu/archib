@@ -3,7 +3,7 @@ Base class for Game type representation.
 """
 from src.archtypes.path import Archive
 
-_REQUIRED = ["platform", "developer", "title", "genre", "year", "adult"]
+_REQUIRED = ["platform", "developer", "title", "genre", "adult"]
 
 GAMEENUMS = {}
 
