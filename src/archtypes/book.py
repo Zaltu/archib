@@ -6,7 +6,7 @@ from src.archtypes.path import Archive
 _REQUIRED = ["type", "author", "title", "genre", "year", "adult"]
 
 BOOKENUMS = {
-    "type": ["Artbook", "Comic", "Doujinshi", "Manga", "Novel"]
+    "type": ["Artbook", "Comic", "Doujinshi", "Manga", "Novel", "Magazine"]
 }
 
 class Book(Archive):

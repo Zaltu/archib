@@ -6,7 +6,7 @@ CREATE TYPE archtypes AS ENUM ('Audio', 'Book', 'Game', 'ImageSet', 'Software', 
 CREATE TYPE videostyles AS ENUM ('Anime', 'Cartoon', 'CG', 'Live-Action');
 CREATE TYPE videotypes AS ENUM ('Series', 'Feature');
 CREATE TYPE audiotypes AS ENUM ('ASMR', 'Audio Book', 'Audio Roleplay', 'Music');
-CREATE TYPE booktypes AS ENUM ('Artbook', 'Comic', 'Doujinshi', 'Manga', 'Novel');
+CREATE TYPE booktypes AS ENUM ('Artbook', 'Comic', 'Doujinshi', 'Manga', 'Novel', 'Magazine');
 CREATE TYPE softtypes AS ENUM ('DCC', 'Driver', 'Reader');
 CREATE TYPE imagetypes AS ENUM ('2D', 'CG', 'Photo');
 
