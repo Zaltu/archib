@@ -11,45 +11,6 @@ CREATE TYPE softtypes AS ENUM ('DCC', 'Driver', 'Reader');
 CREATE TYPE imagetypes AS ENUM ('2D', 'CG', 'Photo');
 
 
-CREATE TABLE games (
-    uid INT GENERATED ALWAYS AS IDENTITY,
-    platform TEXT NOT NULL,
-    developer TEXT NOT NULL,
-    title TEXT NOT NULL,
-    adult BOOLEAN NOT NULL,
-    genre TEXT[],
-    year INT,
-    publisher TEXT,
-    dlc TEXT[],
-    id TEXT,
-    drm TEXT,
-    url TEXT,
-    mod TEXT,
-    gamever TEXT,
-    notes TEXT,
-    filepath TEXT NOT NULL,
-    archtype archtypes NOT NULL,
-    displayname TEXT NOT NULL
-);
-
-CREATE TABLE videos (
-    uid INT GENERATED ALWAYS AS IDENTITY,
-    videostyle videostyles NOT NULL,
-    videotype videotypes NOT NULL,
-    studio TEXT NOT NULL,
-    title TEXT NOT NULL,
-    genre TEXT[] NOT NULL,
-    year INT NOT NULL,
-    adult BOOLEAN NOT NULL,
-    vr BOOLEAN NOT NULL,
-    id TEXT,
-    url TEXT,
-    notes TEXT,
-    filepath TEXT NOT NULL,
-    archtype archtypes NOT NULL,
-    displayname TEXT NOT NULL
-);
-
 CREATE TABLE audio (
     uid INT GENERATED ALWAYS AS IDENTITY,
     audiotype audiotypes NOT NULL,
@@ -82,6 +43,40 @@ CREATE TABLE books (
     displayname TEXT NOT NULL
 );
 
+CREATE TABLE games (
+    uid INT GENERATED ALWAYS AS IDENTITY,
+    platform TEXT NOT NULL,
+    developer TEXT NOT NULL,
+    title TEXT NOT NULL,
+    adult BOOLEAN NOT NULL,
+    genre TEXT[],
+    year INT,
+    publisher TEXT,
+    dlc TEXT[],
+    id TEXT,
+    drm TEXT,
+    url TEXT,
+    mod TEXT,
+    gamever TEXT,
+    notes TEXT,
+    filepath TEXT NOT NULL,
+    archtype archtypes NOT NULL,
+    displayname TEXT NOT NULL
+);
+
+CREATE TABLE imageset (
+    uid INT GENERATED ALWAYS AS IDENTITY,
+    imagetype imagetypes NOT NULL,
+    artist TEXT,
+    title TEXT NOT NULL,
+    filetype TEXT[] NOT NULL,
+    adult BOOLEAN NOT NULL,
+    notes TEXT,
+    filepath TEXT NOT NULL,
+    archtype archtypes NOT NULL,
+    displayname TEXT NOT NULL
+);
+
 CREATE TABLE software (
     uid INT GENERATED ALWAYS AS IDENTITY,
     developer TEXT NOT NULL,
@@ -97,13 +92,18 @@ CREATE TABLE software (
     displayname TEXT NOT NULL
 );
 
-CREATE TABLE imageset (
+CREATE TABLE videos (
     uid INT GENERATED ALWAYS AS IDENTITY,
-    imagetype imagetypes NOT NULL,
-    artist TEXT,
+    videostyle videostyles NOT NULL,
+    videotype videotypes NOT NULL,
+    studio TEXT NOT NULL,
     title TEXT NOT NULL,
-    filetype TEXT[] NOT NULL,
+    genre TEXT[] NOT NULL,
+    year INT NOT NULL,
     adult BOOLEAN NOT NULL,
+    vr BOOLEAN NOT NULL,
+    id TEXT,
+    url TEXT,
     notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
