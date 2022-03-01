@@ -6,7 +6,7 @@ from src.archtypes.path import Archive
 _REQUIRED = ["type", "artist", "title", "adult"]
 
 AUDIOENUMS = {
-    "type": ["ASMR", "Audio Book", "Audio Roleplay", "Music"]
+    "type": ["ASMR", "Audiobook", "Audio Roleplay", "Music"]
 }
 
 class Audio(Archive):
