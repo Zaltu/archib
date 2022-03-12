@@ -24,6 +24,7 @@ CREATE TABLE audio (
     notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
+    livemedia BOOLEAN NOT NULL DEFAULT FALSE,
     displayname TEXT NOT NULL
 );
 
@@ -40,6 +41,7 @@ CREATE TABLE books (
     notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
+    livemedia BOOLEAN NOT NULL DEFAULT FALSE,
     displayname TEXT NOT NULL
 );
 
@@ -74,6 +76,7 @@ CREATE TABLE imageset (
     notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
+    livemedia BOOLEAN NOT NULL DEFAULT FALSE,
     displayname TEXT NOT NULL
 );
 
@@ -107,5 +110,6 @@ CREATE TABLE videos (
     notes TEXT,
     filepath TEXT NOT NULL,
     archtype archtypes NOT NULL,
+    livemedia BOOLEAN NOT NULL DEFAULT FALSE,
     displayname TEXT NOT NULL
 );
