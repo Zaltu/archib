@@ -105,13 +105,12 @@ def _validatedestination(config):
         raise SkipError("ERROR: Archive appears to already exist:\n%s" % config["path"])
 
 
-def _finalizeandupload(compressedlocation, config, archiveobj):
+def _finalizeandupload(compressedlocation, config):
     """
-    Validate compressed file, move to expected location, and update DB.
+    Validate compressed file and move to expected location.
 
     :param str compressedlocation: expected location to the compressed file to archive
     :param dict config: this archive's config
-    :param Archive archiveobj: validated archive object for DB update
 
     :raises SkipError: if compressed file cannot be found, or cannot be moved
     """
@@ -124,9 +123,6 @@ def _finalizeandupload(compressedlocation, config, archiveobj):
         _movefile(compressedlocation, config["path"])
     except:
         raise SkipError("ERROR: Unable to move compressed file... Manual intervention required.")
-
-    # Update DB
-    dbupdater.insertarchive(archiveobj)
 
 
 def processonearchive(archive, config):
@@ -158,6 +154,9 @@ def processonearchive(archive, config):
 
     # Validate compressed file, move to archive location, and update DB
     _finalizeandupload(compressedlocation, config, archiveobj)
+
+    # Update DB
+    dbupdater.insertarchive(archiveobj)
 
 
 def processarchiveset(archivepath, config, directory):
@@ -191,6 +190,9 @@ def processarchiveset(archivepath, config, directory):
 
     # Validate compressed file, move to archive location, and update DB
     _finalizeandupload(compressedlocation, config, archiveobj)
+
+    # Update DB
+    dbupdater.insertarchive(archiveobj)
 
 
 def processarchive(directory):
