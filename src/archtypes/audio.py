@@ -25,3 +25,4 @@ class Audio(Archive):
         self.id = audioconfig.get("id") or None
         self.drm = audioconfig.get("drm") or None
         self.url = audioconfig.get("url") or None
+        self.livemedia = audioconfig.get("livemedia") or False

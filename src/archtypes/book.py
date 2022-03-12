@@ -25,3 +25,4 @@ class Book(Archive):
         self.adult = bookconfig["adult"]
         self.illus = bookconfig.get("illus") or None
         self.id = bookconfig.get("id") or None
+        self.livemedia = bookconfig.get("livemedia") or False

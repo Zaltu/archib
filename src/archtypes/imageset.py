@@ -22,3 +22,4 @@ class ImageSet(Archive):
         self.title = imageconfig["title"]
         self.filetype = imageconfig["filetype"]
         self.adult = imageconfig["adult"]
+        self.livemedia = imageconfig.get("livemedia") or False

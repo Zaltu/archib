@@ -28,3 +28,4 @@ class Video(Archive):
         self.vr = videoconfig["vr"]
         self.id = videoconfig.get("id") or None
         self.url = videoconfig.get("url") or None
+        self.livemedia = videoconfig.get("livemedia") or False
