@@ -11,6 +11,7 @@
         "DRM": null,
         "id": null,
         "url": null,
+        "livemedia": true,
         "adult": false
     }
 }

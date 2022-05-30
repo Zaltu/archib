@@ -8,6 +8,7 @@
         "artist": "WLOP",
         "title": "WLOP",
         "filetype": ["png"],
+        "livemedia": true,
         "adult": false
     }
 }

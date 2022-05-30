@@ -13,6 +13,7 @@
         "id": null,
         "url": null,
         "adult": false,
+        "livemedia": true,
         "vr": false
     }
 }

@@ -11,6 +11,7 @@
         "genre": ["Romantic Comedy", "Slice of Life", "Harem"],
         "year": 1998,
         "id": null,
+        "livemedia": false,
         "adult": false
     }
 }
