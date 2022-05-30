@@ -152,8 +152,8 @@ def processonearchive(archive, config):
         _compress(archive, archivename)
         compressedlocation = os.path.join(os.path.dirname(archive), os.path.basename(config["path"]))
 
-    # Validate compressed file, move to archive location, and update DB
-    _finalizeandupload(compressedlocation, config, archiveobj)
+    # Validate compressed file, move to archive location
+    _finalizeandupload(compressedlocation, config)
 
     # Update DB
     dbupdater.insertarchive(archiveobj)
@@ -188,8 +188,8 @@ def processarchiveset(archivepath, config, directory):
     else:
         raise SkipError("Multi-Archive Sets expect pre-compressed files, or folders. Received:\n%s" % archivepath)
 
-    # Validate compressed file, move to archive location, and update DB
-    _finalizeandupload(compressedlocation, config, archiveobj)
+    # Validate compressed file, move to archive location
+    _finalizeandupload(compressedlocation, config)
 
     # Update DB
     dbupdater.insertarchive(archiveobj)
