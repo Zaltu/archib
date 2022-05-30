@@ -89,7 +89,7 @@ def archive():
     for archive in archives:
         try:
             archiver.processarchive(archive)
-            print(f"Archive processed successfully. It can be safely remove from the staging area.\n{archive}\n")
+            print(f"Archive processed successfully. It can be safely removed from the staging area.\n{archive}\n")
         except SkipError as e:
             print(f"ERROR: A fatal error has occured while processing an archive. It has been skipped.\n{archive}\n%s\n" % str(e))
 
