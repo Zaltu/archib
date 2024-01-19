@@ -7,6 +7,7 @@
         "type": "2D",
         "artist": "WLOP",
         "title": "WLOP",
+        "moving": false,
         "filetype": ["png"],
         "livemedia": true,
         "adult": false

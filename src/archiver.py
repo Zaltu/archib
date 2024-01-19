@@ -8,7 +8,9 @@ import shutil
 
 from src.archtypes import TYPEMAP
 from src.consts import ARCHIVE_FILENAME, ARCHIVE_FILETYPES, SkipError
-from src.db import dbupdater
+
+#from src.db import dbupdater
+from src.db.connecter import Database
 
 def detectcompressed(archivepath):
     """
@@ -124,13 +126,29 @@ def _finalizeandupload(compressedlocation, config):
     except:
         raise SkipError("ERROR: Unable to move compressed file... Manual intervention required.")
 
-
-def processonearchive(archive, config):
+def _preparedbdata(archive, db):
     """
-    Archive the folder to the correct location, and update the DB with the information on this dataset.
+    Decontruct the archive python type into base types for easy sqledge,
+    then pass it off to the DB wrapper to stage
+
+    :param Archive archive: the archive to parse
+    :param Database db: database wrapper to prep load
+    """
+    headers = []
+    values = []
+    for header, value in archive.parse():
+        headers.append(header)
+        values.append(value)
+    db.stage(archive.archtype, headers, values)
+
+
+def processonearchive(archive, config, db):
+    """
+    Archive the folder to the correct location, and stage a DB update with the information on this dataset.
 
     :param str archive: path to the archive top dir
     :param dict config: the loaded archive config
+    :param Database db: database wrapper to prep load
 
     :raises SkipError: in a lot of places
     """
@@ -155,11 +173,11 @@ def processonearchive(archive, config):
     # Validate compressed file, move to archive location
     _finalizeandupload(compressedlocation, config)
 
-    # Update DB
-    dbupdater.insertarchive(archiveobj)
+    # Prep DB Data
+    _preparedbdata(archiveobj, db)
 
 
-def processarchiveset(archivepath, config, directory):
+def processarchiveset(archivepath, config, directory, db):
     """
     Process an archive that was defined in a multi archive set. Multiple aspects of the validation logic are
     different in this situation, so the whole thing is separated.
@@ -167,6 +185,9 @@ def processarchiveset(archivepath, config, directory):
     :param str archivepath: filename of the compressed file or single directory of this archive.
     :param dict config: the config for this particular archive
     :param str directory: path to the location of the compressed file or single directory of this archive
+    :param Database db: database wrapper to prep load
+
+    :raises SkipError: in a lot of places
     """
     # Create the archive-type object, which will validate the config.
     archiveobj = makearchive(config)
@@ -191,8 +212,8 @@ def processarchiveset(archivepath, config, directory):
     # Validate compressed file, move to archive location
     _finalizeandupload(compressedlocation, config)
 
-    # Update DB
-    dbupdater.insertarchive(archiveobj)
+    # Prep DB Data
+    _preparedbdata(archiveobj, db)
 
 
 def processarchive(directory):
@@ -201,11 +222,15 @@ def processarchive(directory):
 
     :param str directory: path to the directory which contains the archive(s)
     """
+    # Ensure DB connection
+    db = Database()
     # Read config
     config = readconfig(directory)
-
-    if "type" in config and config["type"] in TYPEMAP:
-        processonearchive(directory, config)
-    else:
+    # Process archives
+    if "type" in config and config["type"] in TYPEMAP:  # Single Archive
+        processonearchive(directory, config, db)  
+    else:  # Multi Archive
         for archive in config:
-            processarchiveset(archive, config[archive], directory)
+            processarchiveset(archive, config[archive], directory, db)
+    # Confirm DB data
+    db.save()

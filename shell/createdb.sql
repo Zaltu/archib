@@ -59,7 +59,6 @@ CREATE TABLE games (
     storefront TEXT,
     drm TEXT[],
     url TEXT,
-    mod TEXT[],  --TODO
     gamever TEXT,
     note TEXT,
     file_path TEXT NOT NULL,
@@ -100,7 +99,7 @@ CREATE TABLE videos (
     video_style videostyles NOT NULL,
     studio TEXT NOT NULL,
     title TEXT NOT NULL,
-    genre TEXT[] NOT NULL,
+    genres TEXT[] NOT NULL,
     year INT NOT NULL,
     adult BOOLEAN NOT NULL,
     vr BOOLEAN NOT NULL,

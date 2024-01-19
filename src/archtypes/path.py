@@ -15,15 +15,15 @@ class Archive():
     Base class shared by all archive types.
     Holds only a few parameters essential to all types, which must all be set.
     """
-    filepath = None
+    file_path = None
     archtype = None
-    displayname = None
+    display_name = None
     def __init__(self, config):
         Archive.validate(config, _REQUIRED, ARCHIVEENUMS)
-        self.filepath = config["path"]
+        self.file_path = config["path"]
         self.archtype = config["type"]
-        self.displayname = config["displayname"]
-        self.notes = config.get("notes") or None
+        self.display_name = config["displayname"]
+        self.note = config.get("notes") or None
 
     def parse(self):
         """

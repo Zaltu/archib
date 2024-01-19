@@ -17,10 +17,10 @@ class Software(Archive):
         super().__init__(config)
         softconfig = config["data"]
         Archive.validate(softconfig, _REQUIRED, SOFTWAREENUMS)
+        self.soft_type = softconfig["type"]
         self.developer = softconfig["developer"]
         self.title = softconfig["title"]
-        self.softtype = softconfig["type"]
         self.version = softconfig["version"]
-        self.format = softconfig.get("format") or None
-        self.drm = softconfig.get("drm") or None
+        self.formats = softconfig.get("format") or None
+        self.storefront = softconfig.get("storefront") or None
         self.url = softconfig.get("url") or None

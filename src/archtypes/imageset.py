@@ -17,9 +17,10 @@ class ImageSet(Archive):
         super().__init__(config)
         imageconfig = config["data"]
         Archive.validate(imageconfig, _REQUIRED, IMAGESETENUMS)
-        self.imagetype = imageconfig["type"]
+        self.image_type = imageconfig["type"]
         self.artist = imageconfig["artist"]
         self.title = imageconfig["title"]
-        self.filetype = imageconfig["filetype"]
+        self.file_type = imageconfig["filetype"]
         self.adult = imageconfig["adult"]
-        self.livemedia = imageconfig.get("livemedia") or False
+        self.moving = imageconfig.get("moving") or False
+        self.live_media = imageconfig.get("livemedia") or False

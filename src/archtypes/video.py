@@ -18,14 +18,14 @@ class Video(Archive):
         super().__init__(config)
         videoconfig = config["data"]
         Archive.validate(videoconfig, _REQUIRED, VIDEOENUMS)
-        self.videostyle = videoconfig["style"]
-        self.videotype = videoconfig["type"]
+        self.video_style = videoconfig["style"]
+        self.video_type = videoconfig["type"]
         self.studio = videoconfig["studio"]
         self.title = videoconfig["title"]
-        self.genre = videoconfig["genre"]
+        self.genres = videoconfig["genre"]
         self.year = videoconfig["year"]
         self.adult = videoconfig["adult"]
         self.vr = videoconfig["vr"]
-        self.id = videoconfig.get("id") or None
+        self.product_id = videoconfig.get("id") or None
         self.url = videoconfig.get("url") or None
-        self.livemedia = videoconfig.get("livemedia") or False
+        self.live_media = videoconfig.get("livemedia") or False

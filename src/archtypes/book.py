@@ -17,12 +17,12 @@ class Book(Archive):
         super().__init__(config)
         bookconfig = config["data"]
         Archive.validate(bookconfig, _REQUIRED, BOOKENUMS)
-        self.booktype = bookconfig["type"]
+        self.book_type = bookconfig["type"]
         self.author = bookconfig["author"]
         self.title = bookconfig["title"]
-        self.genre = bookconfig["genre"]
+        self.genres = bookconfig["genre"]
         self.year = bookconfig["year"]
         self.adult = bookconfig["adult"]
         self.illus = bookconfig.get("illus") or None
-        self.id = bookconfig.get("id") or None
-        self.livemedia = bookconfig.get("livemedia") or False
+        self.product_id = bookconfig.get("id") or None
+        self.live_media = bookconfig.get("livemedia") or False
