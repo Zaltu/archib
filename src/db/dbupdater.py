@@ -1,4 +1,6 @@
 """
+!!!DEPRECATED!!!
+
 Database connection and insertion logic.
 """
 import os
